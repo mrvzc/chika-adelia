@@ -1,0 +1,68 @@
+
+#Setup turtle
+t = turtle.Turtle()
+t.speed(0)  # Kecepatan maksimum
+t.bgcolor("white")
+t.pensize(2)
+
+    # Menggambar kelopak bunga
+    t.color("red")
+    t.fillcolor("red")
+    t.begin_fill()
+    
+    # Parameter untuk bunga mawar
+    size = 30
+    n = 7  # Jumlah kelopak
+    
+    for i in range(360):
+        angle = i * math.pi / 180
+        r = size * math.sin(n * angle)
+        x = r * math.cos(angle)
+        y = r * math.sin(angle)
+        t.goto(x, y)
+        if i == 0:
+            t.pendown()
+    
+    t.end_fill()
+    
+    # Menggambar tangkai
+    t.penup()
+    t.goto(0, 0)
+    t.pendown()
+    t.color("green")
+    t.setheading(270)  # Menghadap ke bawah
+    t.forward(100)
+    
+    # Menggambar daun
+    draw_leaf()
+    t.right(180)
+    draw_leaf()
+
+def draw_leaf():
+    t.color("green")
+    t.fillcolor("green")
+    t.begin_fill()
+    
+    t.right(45)
+    for _ in range(30):
+        t.forward(2)
+        t.right(3)
+    t.right(90)
+    for _ in range(30):
+        t.forward(2)
+        t.right(3)
+    
+    t.end_fill()
+    t.setheading(270)  # Kembali menghadap ke bawah
+
+# Inisialisasi posisi
+t.penup()
+t.goto(0, 50)
+t.pendown()
+
+# Gambar bunga mawar
+draw_rose()
+
+# Sembunyikan turtle dan tampilkan hasil
+t.hideturtle()
+turtle.done()
